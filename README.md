@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">Smart Palm-Oil Yield &amp; Sustainability Monitor</h1>
 
-## Getting Started
+<p align="center">
+  <strong>A specification-first prototype for palm-oil mill operations: real-time weighing, local AI yield prediction, truck queues, and Telegram notifications.</strong>
+</p>
 
-First, run the development server:
+<p align="center">
+  <img alt="Status: specification" src="https://img.shields.io/badge/status-specification-C98A12?style=flat-square">
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-111111?style=flat-square&logo=next.js&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white">
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+> **Status:** this repository currently contains the product requirements and a
+> Next.js scaffold. The dashboard, weighing integration, AI service, and
+> Telegram bot are **not implemented yet**. The README describes the intended
+> product, not shipped functionality.
+
+## Problem
+
+Palm-oil mills (PKS) coordinate weighbridges, truck queues, lab sampling, and
+loading ramps with paper forms, spreadsheets, and phone calls. The result is
+avoidable waiting time, delayed quality feedback, and weak traceability from
+the weighbridge to the mill's yield.
+
+This project explores a single operations dashboard that connects those steps.
+
+## Planned capabilities
+
+- **Real-time weighing** — gross, tare, and net weight synced from the
+  weighbridge to the dashboard, with offline buffering.
+- **Local yield prediction** — a Python service estimates oil extraction rate
+  (rendemen) from fruit quality and historical data before the truck unloads.
+- **Truck queue management** — gate, weighbridge, and loading-ram status with
+  priority rules based on arrival time and fruit quality.
+- **Telegram notifications** — queue calls, weighing results, and unloading
+  instructions sent to drivers without a custom app.
+- **Traceability** — a record from supplier and truck to weighbridge, quality
+  prediction, and mill intake.
+
+## Current repository
+
+```text
+PRD.md                  Product requirements and architecture
+src/app/                Next.js App Router scaffold
+src/components/         Empty folders reserved for dashboard, queue,
+                        weighing, AI prediction, and UI components
+src/lib/                Shared utilities (empty)
+src/services/           Firebase, Telegram, and AI clients (empty)
+src/types/              Shared TypeScript types (empty)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run the scaffold
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+# http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Roadmap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Model the weighbridge ticket, truck, supplier, and queue entities.
+2. Build the operator dashboard with a mock in-memory store.
+3. Add Firebase persistence and offline sync.
+4. Add the Python yield-prediction service and a typed API boundary.
+5. Add Telegram notifications for drivers.
+6. Add authentication, roles, and an audit trail.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Documentation
 
-## Deploy on Vercel
+The full specification is in [PRD.md](PRD.md). It covers the product vision,
+core features, high-level architecture, and success metrics.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Why this is public
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The specification is published as a reference for teams building mill
+operations software. It is intentionally separate from the author's production
+projects until the implementation is usable.

@@ -1,13 +1,31 @@
 {
-  "name": "temp-next-app",
+  "name": "smart-facility-hub",
   "version": "0.1.0",
   "private": true,
+  "description": "Specification and Next.js scaffold for a palm-oil mill yield and sustainability monitor.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
+  "keywords": [
+    "palm-oil",
+    "operations",
+    "dashboard",
+    "nextjs",
+    "typescript",
+    "tailwindcss"
+  ],
+  "author": "Bahri Muhammad",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahriayet/smart-facility-hub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bahriayet/smart-facility-hub/issues"
+  },
+  "homepage": "https://github.com/bahriayet/smart-facility-hub#readme",
   "dependencies": {
     "next": "16.2.9",
     "react": "19.2.4",
